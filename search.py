@@ -28,8 +28,8 @@ def get_most_similar_paragraph(query_text, db):
     
     # Find the most similar paragraph
     most_similar_id, _ = max(similarities, key=lambda x: x[1])
-    result = db.select("SELECT clauses FROM legal_vectors WHERE id = ?", (most_similar_id,))
-    return result[0][0] if result else None
+    result = db.select("SELECT clauses, date, division FROM legal_vectors WHERE id = ?", (most_similar_id,))
+    return result[0] if result else None
 
 if __name__ == "__main__":
     db = SQLiteManager('example.db')
