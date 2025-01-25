@@ -97,6 +97,7 @@ if __name__ == "__main__":
         division INTEGER NOT NULL,             -- 개정(0) 또는 신설(1)을 구분하는 값
         date TEXT NOT NULL,                    -- 개정 또는 신설 날짜 (문자열 형식)
         clauses INTEGER NOT NULL               -- 조항 번호 (xxxyyy 형식)
+        particle TEXT                          -- 글 내 조사 목록
     );
     """
     db.create_table(create_table_query)
