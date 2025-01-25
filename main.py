@@ -93,7 +93,14 @@ def search_with_curses(db):
         # Enable cursor and get user input
         curses.echo()
         stdscr.addstr(0, 0, "Enter the paragraph to search: ")
-        query_text = stdscr.getstr(1, 0).decode("utf-8")
+        # if stdin backspace ^Z, ^D에 대한 처리, 이후 다시 입력 받기
+        try:
+            query_text = stdscr.getstr(1, 0).decode("utf-8")
+        except:
+            curses.endwin()
+            curses.wrapper(main)
+            return
+        
         
         # Perform search
         most_similar_paragraph = get_most_similar_paragraph(query_text, db)
