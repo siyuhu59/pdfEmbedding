@@ -46,7 +46,7 @@ def mainUI(stdscr):
     curses.curs_set(0)  # 커서를 숨김
     stdscr.clear()
     
-    menu_list = ['검색', '삽입', '종료']
+    menu_list = ['검색', '종료']
     selected_index = 0
     while True:
         stdscr.clear()
