@@ -11,12 +11,12 @@ def get_vector(text):
     embedding = model.encode([text])['dense_vecs'][0]
     return embedding
 
-def get_most_similar_paragraph(query_text, db):
+def get_most_similar_paragraph(query_text, tablename, db):
     # Get vector representation of the input paragraph
     query_vector = get_vector(query_text)
     
     # Retrieve all vectors from the database
-    rows = db.select("SELECT id, vector FROM legal_vectors")
+    rows = db.select(f"SELECT id, vector FROM {tablename}")
     
     # Calculate cosine similarity for each vector
     similarities = []
@@ -28,7 +28,7 @@ def get_most_similar_paragraph(query_text, db):
     
     # Find the most similar paragraph
     most_similar_id, _ = max(similarities, key=lambda x: x[1])
-    result = db.select("SELECT clauses, date, division FROM legal_vectors WHERE id = ?", (most_similar_id,))
+    result = db.select(f"SELECT clauses, date, division FROM {tablename} WHERE id = ?", (most_similar_id,))
     return result[0] if result else None
 
 if __name__ == "__main__":

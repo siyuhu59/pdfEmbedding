@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 검색 및 삽입</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="w-full flex items-center justify-center min-h-screen bg-gray-100">
+
+    <div class="w-full min-h-screen bg-white shadow-md rounded-lg p-6">
+        <!-- 탭 메뉴 -->
+        <div class="flex border-b max-w-lg">
+            <button id="search-tab" class="w-1/2 py-2 text-center text-gray-900 rounded-t border-b-2 border-blue-500">검색</button>
+            <button id="insert-tab" class="w-1/2 py-2 text-center text-gray-500 rounded-t hover:bg-gray-100">삽입</button>
+        </div>
+        <section id="search-content">
+            <!-- 파일 목록 -->
+            <div class="mt-4">
+                <div class="border rounded-lg divide-y" id="table-list">
+                    <div class="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer">
+                        <span>file 1</span>
+                        <span class="text-blue-500">&#10003;</span>
+                    </div>
+                    <div class="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer">
+                        <span>file 2</span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 검색창 -->
+            <div class="mt-4 flex items-center border rounded-lg px-3 py-2 bg-gray-50">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7 7 0 1011 4a7 7 0 006.65 11.65z"></path>
+                </svg>
+                <input id="search" type="text" placeholder="검색어 입력" class="ml-2 w-full bg-transparent outline-none">
+            </div>
+            <div>
+                <button id="searchbtn" class="mt-2 w-full bg-blue-500 text-white px-4 py-2 rounded-lg">검색</button>
+            </div>
+    
+            <!-- 결과 창 -->
+            <div class="mt-4 mb-2">결과</div>
+            <div id="search-result" class=" border rounded-lg p-4 bg-gray-50">
+            </div>
+        </section>
+
+        <section id="insert-content" class="hidden">
+            <!-- 파일 목록 -->
+            <div class="mt-4">
+                <div class="border rounded-lg divide-y" id="file-list">
+                    <div class="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer">
+                        <span>file 1</span>
+                        <span class="text-blue-500">&#10003;</span>
+                    </div>
+                    <div class="p-3 hover:bg-gray-100 cursor-pointer">file 2</div>
+                </div>
+            </div>
+            <div>
+                <button id="insert-button" class="mt-2 w-full bg-blue-500 text-white px-4 py-2 rounded-lg">삽입</button>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="/static/script.js" defer></script>
+
+</body>
+</html>
